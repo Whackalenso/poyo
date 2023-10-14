@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>poyo</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #poyo {
+            content: url("./assets/svg/frame1.svg");
+            cursor: pointer;
+            width: 35%;
+        }
+
+        #poyo.animation {
+            animation: anim;
+            animation-duration: 300ms;
+        }
+
+        @keyframes anim {
+            0% {content: url("./assets/svg/frame1.svg")}
+            55% {content: url("./assets/svg/frame2.svg")}
+            100% {content: url("./assets/svg/frame3.svg")}
+        }
+    </style>
+</head>
+<body>
+    <img id="poyo"/>
+
+    <script>
+        var timer = null;
+        const audio = new Audio("./assets/poyo.mp3")
+
+        function animate(e) {
+            e.target.classList.add("animation");
+            timer = setTimeout(() => {
+                e.target.classList.remove("animation");
+                timer = null;
+            }, 400);
+            if (audio.paused) {
+                audio.play();
+            }else{
+                audio.currentTime = 0
+            }
+        }
+
+        document.getElementById("poyo").addEventListener("click", (e) => {
+            if (timer) {
+                e.target.classList.remove("animation");
+                clearTimeout(timer);
+                timer = setTimeout(() => animate(e), 1);
+            } else {
+                animate(e);
+            }
+        })
+    </script>
+</body>
+</html>
