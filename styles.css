@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+
+    --frame1: url("./assets/svg/frame1.svg");
+    --frame2: url("./assets/svg/frame2.svg");
+    --frame3: url("./assets/svg/frame3.svg");
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-family: "Roboto Mono";
+}
+
+@media (min-width: 750px) {
+    footer {
+        font-size: 14pt;
+    }
+}
+@media (width < 750px) {
+    footer {
+        font-size: 10pt;
+    }
+}
+
+#poyo {
+    content: var(--frame1);
+    cursor: pointer;
+    width: 50%;
+    max-width: 90%;
+    max-height: 55%;
+    user-select: none;
+}
+
+#poyo.animation {
+    animation: anim;
+    animation-duration: 300ms;
+}
+
+@keyframes anim {
+    0% {content: var(--frame1)}
+    55% {content: var(--frame2)}
+    100% {content: var(--frame3)}
+}
+
+#hidden {
+    position: absolute;
+    visibility: hidden;
+}
+#frame1 {
+    content: var(--frame1);
+}
+#frame2 {
+    content: var(--frame2);
+}
+#frame3 {
+    content: var(--frame3);
+}
