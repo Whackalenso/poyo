@@ -76,7 +76,7 @@
             }
         }
 
-        document.getElementById("poyo").addEventListener("click", (e) => {
+        document.getElementById("poyo").addEventListener("mousedown", (e) => {
             if (timer) {
                 e.target.classList.remove("animation");
                 clearTimeout(timer);
