@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     margin: 0;
 
@@ -16,18 +13,19 @@ body {
 footer {
     position: absolute;
     bottom: 20px;
-    right: 20px;
     font-family: "Roboto Mono";
+
+    font-size: 10pt;
+    right: 50%;
+    transform: translateX(50%);
+    white-space: nowrap;
 }
 
-@media (min-width: 750px) {
+@media (min-width: 1025px) {
     footer {
         font-size: 14pt;
-    }
-}
-@media (width < 750px) {
-    footer {
-        font-size: 10pt;
+        right: 20px;
+        transform: none;
     }
 }
 
@@ -38,6 +36,11 @@ footer {
     max-width: 90%;
     max-height: 55%;
     user-select: none;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
 
 #poyo.animation {
