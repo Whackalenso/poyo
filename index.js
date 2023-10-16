@@ -15,6 +15,9 @@ function animate(e) {
 }
 
 document.getElementById("poyo").addEventListener("mousedown", (e) => {
+  if (e.button != 0) {
+    return;
+  }
   if (timer) {
     e.target.classList.remove("animation");
     clearTimeout(timer);
