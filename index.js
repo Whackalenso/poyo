@@ -16,7 +16,14 @@ function setFrame(e, frame) {
   }
 }
 
+var doubleTouchStartTimestamp = 0;
 document.getElementById("poyo").addEventListener("mousedown", (e) => {
+  var now = +new Date();
+  if (doubleTouchStartTimestamp + 500 > now) {
+    e.preventDefault();
+  }
+  doubleTouchStartTimestamp = now;
+
   if (e.button != 0) {
     return;
   }
