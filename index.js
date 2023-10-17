@@ -1,16 +1,18 @@
 var timer = null;
 const audio = new Audio("./assets/poyo.mp3");
+const frame_percentages = [0.15, 0.5, 0.35];
+const duration = 300;
 
-function animate(e) {
-  e.target.classList.add("animation");
-  timer = setTimeout(() => {
-    e.target.classList.remove("animation");
-    timer = null;
-  }, 300);
-  if (audio.paused) {
-    audio.play();
+function setFrame(e, frame) {
+  e.target.src = `./assets/svg/frame${frame}.svg`;
+  const length = frame_percentages[frame - 1] * duration;
+  if (frame < 3) {
+    timer = setTimeout(() => setFrame(e, frame + 1), length);
   } else {
-    audio.currentTime = 0;
+    timer = setTimeout(() => {
+      e.target.src = "./assets/svg/frame1.svg";
+      timer = null;
+    }, length);
   }
 }
 
@@ -19,10 +21,12 @@ document.getElementById("poyo").addEventListener("mousedown", (e) => {
     return;
   }
   if (timer) {
-    e.target.classList.remove("animation");
     clearTimeout(timer);
-    timer = setTimeout(() => animate(e), 1);
-  } else {
-    animate(e);
   }
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.currentTime = 0;
+  }
+  setFrame(e, 1);
 });

@@ -4,10 +4,6 @@ body {
     height: 100%;
     overflow: hidden;
     margin: 0;
-
-    --frame1: url("./assets/svg/frame1.svg");
-    --frame2: url("./assets/svg/frame2.svg");
-    --frame3: url("./assets/svg/frame3.svg");
 }
 
 footer {
@@ -30,7 +26,6 @@ footer {
 }
 
 #poyo {
-    content: var(--frame1);
     cursor: pointer;
     width: 50%;
     max-width: 90%;
@@ -43,27 +38,7 @@ footer {
     transform: translate(-50%, -50%);
 }
 
-#poyo.animation {
-    animation: anim;
-    animation-duration: 300ms;
-}
-
-@keyframes anim {
-    0% {content: var(--frame1)}
-    55% {content: var(--frame2)}
-    100% {content: var(--frame3)}
-}
-
-#hidden {
+.hidden {
     position: absolute;
-    visibility: hidden;
-}
-#frame1 {
-    content: var(--frame1);
-}
-#frame2 {
-    content: var(--frame2);
-}
-#frame3 {
-    content: var(--frame3);
+    display: none;
 }
